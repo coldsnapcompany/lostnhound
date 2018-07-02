@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "968409001802",
+    "firebase_url": "https://lostnhound-4cc73.firebaseio.com",
+    "project_id": "lostnhound-4cc73",
+    "storage_bucket": "lostnhound-4cc73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968409001802:android:593ed2daf1f2dea6",
+        "android_client_info": {
+          "package_name": "com.coldsnap.lostnhound"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968409001802-92sd7i38mgstjjct3fqpn4ks4vs7qfb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coldsnap.lostnhound",
+            "certificate_hash": "3df49dd8eb26162e4745d19d8d8a2e9e1ae0d8dd"
+          }
+        },
+        {
+          "client_id": "968409001802-3f422ms9grlfjcrhflfca90tik4khpk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8iRy96FeBMCtRodA3tt2wa77JiIlu5tQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968409001802-3f422ms9grlfjcrhflfca90tik4khpk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
