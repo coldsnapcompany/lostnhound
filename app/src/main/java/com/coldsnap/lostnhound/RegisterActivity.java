@@ -16,12 +16,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button register_detailsBtn;
     private EditText full_name, email, password;
+    private DatabaseReference mDatabase;
+    private DatabaseReference databaseUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        databaseUsers = FirebaseDatabase.getInstance().getReference("users");
 
         // assigning UI elements to variables
         register_detailsBtn = findViewById(R.id.registerdetailsBtn);
@@ -65,6 +71,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                String userId = databaseUsers.push().getKey();
+                User user = new User(nameStr, emailStr, userId);
+                databaseUsers.child(userId).setValue(user);
 
                 //adds user to Firebase auth DB
                 mAuth.createUserWithEmailAndPassword(emailStr, passwordStr)

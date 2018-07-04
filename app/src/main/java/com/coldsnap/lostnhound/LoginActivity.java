@@ -14,12 +14,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button register_button, login_button, forgot_password;
     private EditText email, password;
     private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -29,12 +32,12 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        // to maintain a users log in, dont have to log in every time
-//        if (mAuth.getCurrentUser() != null) {
-//            // User is logged in
-//            Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(registerIntent);
-//        }
+        //to maintain a users log in, don't have to log in every time
+        if (mAuth.getCurrentUser() != null) {
+            // User is logged in
+            Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(registerIntent);
+        }
 
         // assigning UI elements to variables
         login_button = findViewById(R.id.loginBtn);

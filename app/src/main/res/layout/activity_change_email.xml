@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ChangeEmailActivity">
 
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="54dp"
+        android:layout_height="38dp"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="4dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -13,11 +13,15 @@
 
     <!-- settings menu strings -->
     <string name="change_email">Change Email</string>
-    <string name="delete_account">Delete Account</string>
+    <string name="delete_account">Disable Account</string>
     <string name="sign_out">Sign Out</string>
     <string name="new_password">Please Enter New Password</string>
     <string name="send_reset_pass">Send Reset Mail</string>
     <string name="change_password">Change Password</string>
     <string name="enter_email">Enter Email</string>
+
+    <!-- delete account menu strings -->
+    <string name="delete_textview">Please re-enter your password</string>
+    <string name="delete_button">Disable Account</string>
 
 </resources>

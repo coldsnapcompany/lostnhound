@@ -1,5 +1,6 @@
 package com.coldsnap.lostnhound;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,9 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 public class ChangePasswordActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    Button changePassword;
-    EditText emailAddress;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private ImageButton back_button;
+    private Button changePassword;
+    private EditText emailAddress;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @Override
@@ -30,6 +33,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         changePassword = findViewById(R.id.changepassBtn);
         emailAddress = findViewById(R.id.passwordChangeEt);
+        back_button = findViewById(R.id.backBtn);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChangePasswordActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,4 +69,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ChangePasswordActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 }
