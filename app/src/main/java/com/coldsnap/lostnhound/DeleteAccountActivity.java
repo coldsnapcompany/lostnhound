@@ -32,16 +32,17 @@ public class DeleteAccountActivity extends AppCompatActivity {
         delete_button = findViewById(R.id.deleteBtn);
         back_button = findViewById(R.id.backBtn);
 
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user.delete();
-
-                Intent registerIntent = new Intent(DeleteAccountActivity.this, LoginActivity.class);
-                startActivity(registerIntent);
-                Toast.makeText(getApplicationContext(), "Account successfully disabled.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        //will be put back when delete profile iun DB is implemented
+//        delete_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                user.delete();
+//
+//                Intent registerIntent = new Intent(DeleteAccountActivity.this, LoginActivity.class);
+//                startActivity(registerIntent);
+//                Toast.makeText(getApplicationContext(), "Account successfully disabled.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +54,6 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(DeleteAccountActivity.this, SettingsActivity.class);
-        startActivity(intent);
-    }
+
 
 }

@@ -33,11 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //to maintain a users log in, don't have to log in every time
-        if (mAuth.getCurrentUser() != null) {
-            // User is logged in
-            Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(registerIntent);
-        }
+        //will be added back when user getting logged in even after account deleted is fixed
+//        if (mAuth.getCurrentUser() != null) {
+//            // User is logged in
+//            Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(registerIntent);
+//        }
 
         // assigning UI elements to variables
         login_button = findViewById(R.id.loginBtn);

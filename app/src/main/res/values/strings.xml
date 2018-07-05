@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- log in and register strings -->
+    <!-- log in and register page strings -->
     <string name="app_name">LostNHound</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -24,4 +24,62 @@
     <string name="delete_textview">Please re-enter your password</string>
     <string name="delete_button">Disable Account</string>
 
+    <!-- main menu strings -->
+    <string name="lost_button">Lost</string>
+    <string name="found_button">Found</string>
+
+    <!-- found page strings -->
+    <string name="pet_name">Pet\'s name (if collared):</string>
+    <string name="pet_type">Type of pet (cat, dog):</string>
+    <string name="postcode">Dublin post area:</string>
+    <string name="colour">Pet\'s primary coat/skin colour:</string>
+    <string name="submit">Submit</string>
+    <string name="postcode_prompt"></string>
+    <string name="pet_prompt"></string>
+    <string-array name="postcodes">
+        <item></item>
+        <item>Dublin 1</item>
+        <item>Dublin 2</item>
+        <item>Dublin 3</item>
+        <item>Dublin 4</item>
+        <item>Dublin 5</item>
+        <item>Dublin 6</item>
+        <item>Dublin 6W</item>
+        <item>Dublin 7</item>
+        <item>Dublin 8</item>
+        <item>Dublin 9</item>
+        <item>Dublin 10</item>
+        <item>Dublin 11</item>
+        <item>Dublin 12</item>
+        <item>Dublin 13</item>
+        <item>Dublin 14</item>
+        <item>Dublin 15</item>
+        <item>Dublin 16</item>
+        <item>Dublin 17</item>
+        <item>Dublin 18</item>
+        <item>Dublin 20</item>
+        <item>Dublin 22</item>
+        <item>Dublin 24</item>
+    </string-array>
+    <string-array name="pet_types">
+        <item></item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+        <item>Reptile - Turtle</item>
+        <item>Reptile - Lizard</item>
+    </string-array>
+    <string-array name="pet_colours">
+        <item></item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Brown</item>
+        <item>Green</item>
+        <item>Tan</item>
+        <item>Red</item>
+        <item>Brindle</item>
+        <item>Gold</item>
+        <item>Blue</item>
+        <item>Grey</item>
+    </string-array>
 </resources>

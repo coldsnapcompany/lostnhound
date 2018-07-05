@@ -24,7 +24,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button register_detailsBtn;
     private EditText full_name, email, password;
-    private DatabaseReference mDatabase;
     private DatabaseReference databaseUsers;
 
     @Override
@@ -33,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
 
         // assigning UI elements to variables

@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private String userId;
     private String fullName;
+    private Button lost_button, found_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseUsers = FirebaseDatabase.getInstance().getReference("users"); //users DB reference
         settings_button = findViewById(R.id.settingsBtn);
+        lost_button = findViewById(R.id.lostBtn);
+        found_button = findViewById(R.id.foundBtn);
         userId = currentUser.getUid(); //not used
 
 
@@ -49,7 +52,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        lost_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(MainActivity.this, LostActivity.class);
+                startActivity(registerIntent);
+            }
+        });
 
+        found_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(MainActivity.this, FoundActivity.class);
+                startActivity(registerIntent);
+            }
+        });
 
     }
 

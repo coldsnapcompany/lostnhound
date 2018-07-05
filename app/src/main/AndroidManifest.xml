@@ -25,7 +25,9 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".ChangeEmailActivity" />
         <activity android:name=".DeleteAccountActivity" />
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".LostActivity" />
+        <activity android:name=".FoundActivity"></activity>
     </application>
 
 </manifest>
