@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     } else { //when log in is successful (always passes here, redundant check above), adds profile to DB with auth UID not key
                                                         String userId = databaseUsers.push().getKey();
 
-                                                        User user = new User(nameStr, emailStr, userDB.getUid());
+                                                        User user = new User(nameStr, emailStr, userId); //change to userDB.getUid() for the long ID in auth
                                                         databaseUsers.child(userId).setValue(user);
 
                                                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);

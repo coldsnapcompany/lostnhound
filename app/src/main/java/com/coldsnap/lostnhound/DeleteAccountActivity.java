@@ -10,8 +10,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DeleteAccountActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class DeleteAccountActivity extends AppCompatActivity {
     private ImageButton back_button;
     private DatabaseReference databaseUsers;
     private String key;
+    private String emailAddress;
+    private DatabaseReference certainUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +37,37 @@ public class DeleteAccountActivity extends AppCompatActivity {
         databaseUsers = FirebaseDatabase.getInstance().getReference().child("users");
         key = currentUser.getUid();
 
-
+        emailAddress = currentUser.getEmail(); //tested, works
 
         //will be put back when delete profile in DB is implemented
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // delete user from DB code goes here and go
-                String userId = currentUser.getUid();
-                Toast.makeText(getApplicationContext(), userId, Toast.LENGTH_SHORT).show();
-                databaseUsers.child(key).removeValue(); //doesn't work
+                // delete user from DB code goes here
 
-                currentUser.delete();
+
+//                //currently deletes all profile entries in DB
+//                databaseUsers.child("email").orderByChild("email").equalTo(emailAddress).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                            String userKey = dataSnapshot.getKey();
+//                            Toast.makeText(getApplicationContext(), userKey, Toast.LENGTH_SHORT).show();
+//                            //certainUser = FirebaseDatabase.getInstance().getReference().child("users").child(userKey); //maybe take out .child("users")
+//
+//                            dataSnapshot.getRef().removeValue();
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+
+
+                currentUser.delete(); //deletes from auth DB
 
                 Intent registerIntent = new Intent(DeleteAccountActivity.this, LoginActivity.class);
                 startActivity(registerIntent);
@@ -59,6 +82,8 @@ public class DeleteAccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 
