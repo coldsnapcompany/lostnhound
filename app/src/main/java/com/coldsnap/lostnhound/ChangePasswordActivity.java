@@ -38,13 +38,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChangePasswordActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                Intent changePasswordToSettingsIntent = new Intent(ChangePasswordActivity.this, SettingsActivity.class);
+                startActivity(changePasswordToSettingsIntent);
             }
         });
 
 
         //will add back in when it works, crashes app
+        //could try use forgot password functionality
 //        changePassword.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

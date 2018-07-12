@@ -20,8 +20,8 @@ public class LostActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LostActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent lostToMainIntent = new Intent(LostActivity.this, MainActivity.class);
+                startActivity(lostToMainIntent);
             }
         });
 

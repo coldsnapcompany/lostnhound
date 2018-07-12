@@ -20,16 +20,16 @@ public class ChangeEmailActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChangeEmailActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                Intent changeEmailToSettingsIntent = new Intent(ChangeEmailActivity.this, SettingsActivity.class);
+                startActivity(changeEmailToSettingsIntent);
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ChangeEmailActivity.this, SettingsActivity.class);
-        startActivity(intent);
+        Intent changeEmailToSettingsIntent = new Intent(ChangeEmailActivity.this, SettingsActivity.class);
+        startActivity(changeEmailToSettingsIntent);
     }
 
 }

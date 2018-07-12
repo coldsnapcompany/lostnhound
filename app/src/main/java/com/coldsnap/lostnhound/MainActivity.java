@@ -47,27 +47,34 @@ public class MainActivity extends AppCompatActivity {
         settings_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(registerIntent);
+                Intent mainToSettingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(mainToSettingsIntent);
             }
         });
 
         lost_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(MainActivity.this, LostActivity.class);
-                startActivity(registerIntent);
+                Intent mainToLostIntent = new Intent(MainActivity.this, LostActivity.class);
+                startActivity(mainToLostIntent);
             }
         });
 
         found_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(MainActivity.this, FoundActivity.class);
-                startActivity(registerIntent);
+                Intent mainToFoundIntent = new Intent(MainActivity.this, FoundActivity.class);
+                startActivity(mainToFoundIntent);
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed(); //commented this line in order to disable back press
+        //Write your code here
+        Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
     }
 
 }

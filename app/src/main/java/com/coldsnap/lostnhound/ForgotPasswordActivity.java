@@ -35,12 +35,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String emailStr = emailAddress.getText().toString().trim();
 
-                //forgot password is completely done on login page, checks for valid email entered
                 if (TextUtils.isEmpty(emailStr)) {
                     Toast.makeText(getApplicationContext(), "Please enter your email above", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //sends forgot password email to user and the rest is handled in browser by firebase
                 mAuth.sendPasswordResetEmail(emailStr)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
 
@@ -49,8 +49,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ForgotPasswordActivity.this, "Reset email sent", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
-                                    startActivity(intent);
+                                    Intent forgotPassToLoginIntent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                                    startActivity(forgotPassToLoginIntent);
                                 } else {
                                     Toast.makeText(ForgotPasswordActivity.this, "Failed to send reset email", Toast.LENGTH_SHORT).show();
                                 }

@@ -22,10 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser userDB;
+    private FirebaseUser userDB; //is used
     private Button register_detailsBtn;
     private EditText full_name, email, password;
     private DatabaseReference databaseUsers;
+    private String userDBUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
-        userDB = FirebaseAuth.getInstance().getCurrentUser();
 
         // assigning UI elements to variables
         register_detailsBtn = findViewById(R.id.registerdetailsBtn);
@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.emailregEt);
         password = findViewById(R.id.passwordregEt);
 
+        //gets data fields, checks them and creates user in auth DB
         register_detailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                //adds user to Firebase auth DB
+                //adds user to auth DB
                 mAuth.createUserWithEmailAndPassword(emailStr, passwordStr)
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -84,6 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Email already in use or invalid format" ,
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+
+                                    //signs user in after creating the user in auth DB
                                     mAuth.signInWithEmailAndPassword(emailStr, passwordStr) //if reg is successful, signs user in
                                             .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                                 @Override
@@ -92,20 +95,19 @@ public class RegisterActivity extends AppCompatActivity {
                                                     // the auth state listener will be notified and logic to handle the
                                                     // signed in user can be handled in the listener.
                                                     if (!task.isSuccessful()) {
-                                                        // there was an error
-                                                        if (password.length() < 6) {
-                                                            password.setError(getString(R.string.minimum_password)); //live message stating password too short
-                                                        } else {
-                                                            Toast.makeText(RegisterActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-                                                        }
-                                                    } else { //when log in is successful (always passes here, redundant check above), adds profile to DB with auth UID not key
-                                                        String userId = databaseUsers.push().getKey();
+                                                        // there was an error logging in
+                                                        Toast.makeText(RegisterActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
 
-                                                        User user = new User(nameStr, emailStr, userId); //change to userDB.getUid() for the long ID in auth
-                                                        databaseUsers.child(userId).setValue(user);
+                                                    } else { //when log in is successful, adds profile to DB with auth UID not key
 
-                                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                                        startActivity(intent);
+                                                        userDB = FirebaseAuth.getInstance().getCurrentUser(); //these 2 lines need to be as only now does a current user exist
+                                                        userDBUID = FirebaseAuth.getInstance().getCurrentUser().getUid(); // can now get userID from current user as its just been created
+
+                                                        User user = new User(nameStr, emailStr, userDBUID); //makes a User object
+                                                        databaseUsers.child(userDBUID).setValue(user); //makes a child for "users" with auth userID as key and pops with user object
+
+                                                        Intent registerToMainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                        startActivity(registerToMainIntent);
                                                     }
                                                 }
                                             });
@@ -114,10 +116,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             }
                 });
-
-
-
-
 
             }
         });

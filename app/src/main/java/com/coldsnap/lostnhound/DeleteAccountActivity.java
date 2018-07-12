@@ -21,10 +21,8 @@ public class DeleteAccountActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private Button delete_button;
     private ImageButton back_button;
-    private DatabaseReference databaseUsers;
-    private String key;
-    private String emailAddress;
-    private DatabaseReference certainUser;
+    private DatabaseReference databaseUser;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,43 +32,21 @@ public class DeleteAccountActivity extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         delete_button = findViewById(R.id.deleteBtn);
         back_button = findViewById(R.id.backBtn);
-        databaseUsers = FirebaseDatabase.getInstance().getReference().child("users");
-        key = currentUser.getUid();
+        userId = currentUser.getUid();
+        databaseUser = FirebaseDatabase.getInstance().getReference("users/" + userId); //reference to specific user using path: users/userID
 
-        emailAddress = currentUser.getEmail(); //tested, works
 
-        //will be put back when delete profile in DB is implemented
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // delete user from DB code goes here
+                // delete user from DB
+                databaseUser.removeValue();
+                //deletes user from auth DB
+                currentUser.delete();
 
-
-//                //currently deletes all profile entries in DB
-//                databaseUsers.child("email").orderByChild("email").equalTo(emailAddress).addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                            String userKey = dataSnapshot.getKey();
-//                            Toast.makeText(getApplicationContext(), userKey, Toast.LENGTH_SHORT).show();
-//                            //certainUser = FirebaseDatabase.getInstance().getReference().child("users").child(userKey); //maybe take out .child("users")
-//
-//                            dataSnapshot.getRef().removeValue();
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-
-
-                currentUser.delete(); //deletes from auth DB
-
-                Intent registerIntent = new Intent(DeleteAccountActivity.this, LoginActivity.class);
-                startActivity(registerIntent);
+                Intent deleteAccToLoginIntent = new Intent(DeleteAccountActivity.this, LoginActivity.class);
+                startActivity(deleteAccToLoginIntent);
                 Toast.makeText(getApplicationContext(), "Account successfully disabled.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -78,13 +54,18 @@ public class DeleteAccountActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DeleteAccountActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                Intent deleteAccToSettingsIntent = new Intent(DeleteAccountActivity.this, SettingsActivity.class);
+                startActivity(deleteAccToSettingsIntent);
             }
         });
 
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        Intent deleteAccToSettingsIntent = new Intent(DeleteAccountActivity.this, SettingsActivity.class);
+        startActivity(deleteAccToSettingsIntent);
     }
 
 }

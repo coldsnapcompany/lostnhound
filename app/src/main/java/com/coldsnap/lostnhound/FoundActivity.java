@@ -39,8 +39,8 @@ public class FoundActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FoundActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
+                startActivity(foundToMainIntent);
             }
         });
 
@@ -53,12 +53,12 @@ public class FoundActivity extends AppCompatActivity {
                 String postcodeStr = postcode.getSelectedItem().toString();
                 String colourStr = colour.getSelectedItem().toString();
 
-                String userId = databasePets.push().getKey();
+                String petId = databasePets.push().getKey();
                 Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr);
-                databasePets.child(userId).setValue(pet);
+                databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets"
 
-                Intent registerIntent = new Intent(FoundActivity.this, MainActivity.class);
-                startActivity(registerIntent);
+                Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
+                startActivity(foundToMainIntent);
 
                 Toast.makeText(getApplicationContext(), "Pet posted, thank you", Toast.LENGTH_SHORT).show();
 

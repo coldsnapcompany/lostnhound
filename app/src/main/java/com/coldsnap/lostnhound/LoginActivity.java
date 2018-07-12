@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(registerIntent);
+                Intent loginToRegisterIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(loginToRegisterIntent);
             }
         });
 
@@ -91,8 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
+                                    Intent loginToMainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(loginToMainIntent);
                                     finish();
                                 }
                             }
@@ -104,10 +104,17 @@ public class LoginActivity extends AppCompatActivity {
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
+                Intent loginToPassForgotIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(loginToPassForgotIntent);
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed(); //commented this line in order to disable back press
+        //Write your code here
+        Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
     }
 }
