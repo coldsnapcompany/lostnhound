@@ -19,6 +19,7 @@
     <string name="send_reset_pass">Send Reset Mail</string>
     <string name="change_password">Change Password</string>
     <string name="enter_email">Enter Email</string>
+    <string name="back_button">back button</string>
 
     <!-- delete account menu strings -->
     <string name="delete_textview">Please re-enter your password</string>
