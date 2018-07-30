@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,7 @@ public class LostActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     PetAdapter adapter;
+    private DatabaseReference petsRef;
 
     List<Pet> petList;
 
@@ -26,6 +33,7 @@ public class LostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lost);
 
         back_button = findViewById(R.id.backBtn);
+        petsRef = FirebaseDatabase.getInstance().getReference("pets");
 
         petList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
@@ -61,8 +69,69 @@ public class LostActivity extends AppCompatActivity {
                         "Dublin 4",
                         "Blue"));
 
+        petList.add(
+                new Pet(
+                        "Oscar",
+                        "Bird",
+                        "Dublin 4",
+                        "Blue"));
+
+        petList.add(
+                new Pet(
+                        "Oscar",
+                        "Bird",
+                        "Dublin 4",
+                        "Blue"));
+
+        petList.add(
+                new Pet(
+                        "Oscar",
+                        "Bird",
+                        "Dublin 4",
+                        "Blue"));
+
+        petList.add(
+                new Pet(
+                        "Oscar",
+                        "Bird",
+                        "Dublin 4",
+                        "Blue"));
+
+
         adapter = new PetAdapter(this, petList);
         recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
 
     }
+
+//    @Override
+//    public void onStart(){
+//
+//        super.onStart();
+//
+//        petsRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                petList.clear();
+//
+//                for(DataSnapshot petSnapshot: dataSnapshot.getChildren()){
+//
+//                    Pet pet = petSnapshot.getValue(Pet.class);
+//
+//                    petList.add(pet);
+//
+//                }
+//
+//                PetAdapter adapter = new PetAdapter(getApplicationContext(), petList);
+//                recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 }

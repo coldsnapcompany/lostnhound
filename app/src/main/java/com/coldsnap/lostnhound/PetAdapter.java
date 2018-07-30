@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
