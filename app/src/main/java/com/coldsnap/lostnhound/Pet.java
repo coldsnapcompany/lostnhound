@@ -7,6 +7,9 @@ public class Pet {
     String postcode;
     String colour;
 
+    public Pet() {
+    }
+
     public Pet(String name, String type, String postcode, String colour) {
         this.name = name;
         this.type = type;

@@ -48,90 +48,32 @@ public class LostActivity extends AppCompatActivity {
             }
         });
 
-        petList.add(
-                new Pet(
-                        "Butch",
-                        "Cat",
-                        "Dublin 13",
-                        "Tan"));
+        petsRef.addValueEventListener(new ValueEventListener() { //reads DB for pet entries
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //doesn't just read on data change, also reads on initial activity start
 
-        petList.add(
-                new Pet(
-                        "Dylan",
-                        "Dog",
-                        "Dublin 6W",
-                        "Brindle"));
+                for (DataSnapshot petSnapshot : dataSnapshot.getChildren()) { //goes through all children of db ref, in this case Pets
 
-        petList.add(
-                new Pet(
-                        "Oscar",
-                        "Bird",
-                        "Dublin 4",
-                        "Blue"));
+                    Pet pet = new Pet(); //new Pet object
+                    pet.setName(petSnapshot.getValue(Pet.class).getName()); //sets info from each DB entry to the Pet object
+                    pet.setType(petSnapshot.getValue(Pet.class).getType());
+                    pet.setPostcode(petSnapshot.getValue(Pet.class).getPostcode());
+                    pet.setColour(petSnapshot.getValue(Pet.class).getColour());
 
-        petList.add(
-                new Pet(
-                        "Oscar",
-                        "Bird",
-                        "Dublin 4",
-                        "Blue"));
+                    petList.add(pet); //adds Pet object to List, then repeats for each DB entry
 
-        petList.add(
-                new Pet(
-                        "Oscar",
-                        "Bird",
-                        "Dublin 4",
-                        "Blue"));
+                }
 
-        petList.add(
-                new Pet(
-                        "Oscar",
-                        "Bird",
-                        "Dublin 4",
-                        "Blue"));
-
-        petList.add(
-                new Pet(
-                        "Oscar",
-                        "Bird",
-                        "Dublin 4",
-                        "Blue"));
+                adapter = new PetAdapter(getApplicationContext(), petList);
+                recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
 
 
-        adapter = new PetAdapter(this, petList);
-        recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
-
-//    @Override
-//    public void onStart(){
-//
-//        super.onStart();
-//
-//        petsRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                petList.clear();
-//
-//                for(DataSnapshot petSnapshot: dataSnapshot.getChildren()){
-//
-//                    Pet pet = petSnapshot.getValue(Pet.class);
-//
-//                    petList.add(pet);
-//
-//                }
-//
-//                PetAdapter adapter = new PetAdapter(getApplicationContext(), petList);
-//                recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//    }
 }
