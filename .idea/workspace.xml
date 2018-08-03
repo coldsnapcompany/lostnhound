@@ -41,6 +41,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LostActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LostActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="611">
+              <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,33 +84,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FoundActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/FoundActivity.java">
+      <file leaf-file-name="PetAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/PetAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-              <folding>
-                <element signature="e#2500#2647#0" expanded="true" />
-                <element signature="e#2646#2647#0" expanded="true" />
-                <element signature="e#2685#3618#0" expanded="true" />
-                <element signature="e#3617#3618#0" expanded="true" />
-                <element signature="e#5375#5774#0" expanded="true" />
-                <element signature="e#5773#5774#0" expanded="true" />
-                <element signature="e#5818#6194#0" expanded="true" />
-                <element signature="e#6193#6194#0" expanded="true" />
-                <element signature="e#6239#6749#0" expanded="true" />
-                <element signature="e#6748#6749#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="696">
+              <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <file leaf-file-name="FoundActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/FoundActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="527">
+              <caret line="101" column="11" lean-forward="true" selection-start-line="101" selection-start-column="11" selection-end-line="101" selection-end-column="11" />
+              <folding>
+                <element signature="e#2528#2675#0" expanded="true" />
+                <element signature="e#2674#2675#0" expanded="true" />
+                <element signature="e#2713#3699#0" expanded="true" />
+                <element signature="e#3698#3699#0" expanded="true" />
+                <element signature="e#5488#5893#0" expanded="true" />
+                <element signature="e#5892#5893#0" expanded="true" />
+                <element signature="e#5937#6313#0" expanded="true" />
+                <element signature="e#6312#6313#0" expanded="true" />
+                <element signature="e#6358#6868#0" expanded="true" />
+                <element signature="e#6867#6868#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2169,13 +2179,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/PetAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/Pet.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LostActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_found.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/Pet.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/FoundActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_found.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LostActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -2514,7 +2524,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/Pet.java</url>
+          <line>57</line>
+          <properties class="com.coldsnap.lostnhound.Pet" method="setImage">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2773,16 +2793,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/entry_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2848,26 +2858,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/Pet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/PetAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2883,18 +2877,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LostActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="36" lean-forward="false" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        <state relative-caret-position="1632">
+          <caret line="120" column="1" lean-forward="false" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
+          <folding>
+            <element signature="e#4538#4822#0" expanded="true" />
+            <element signature="e#4821#4822#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/RegisterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        <state relative-caret-position="679">
+          <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="8" selection-end-line="81" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/Pet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -2910,48 +2923,56 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LostActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="8" selection-end-line="81" selection-end-column="23" />
+        <state relative-caret-position="611">
+          <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/RegisterActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="1009">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/entry_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="120" column="1" lean-forward="false" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
-          <folding>
-            <element signature="e#4538#4822#0" expanded="true" />
-            <element signature="e#4821#4822#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/PetAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/coldsnap/lostnhound/FoundActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state relative-caret-position="527">
+          <caret line="101" column="11" lean-forward="true" selection-start-line="101" selection-start-column="11" selection-end-line="101" selection-end-column="11" />
           <folding>
-            <element signature="e#2500#2647#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2685#3618#0" expanded="true" />
-            <element signature="e#3617#3618#0" expanded="true" />
-            <element signature="e#5375#5774#0" expanded="true" />
-            <element signature="e#5773#5774#0" expanded="true" />
-            <element signature="e#5818#6194#0" expanded="true" />
-            <element signature="e#6193#6194#0" expanded="true" />
-            <element signature="e#6239#6749#0" expanded="true" />
-            <element signature="e#6748#6749#0" expanded="true" />
+            <element signature="e#2528#2675#0" expanded="true" />
+            <element signature="e#2674#2675#0" expanded="true" />
+            <element signature="e#2713#3699#0" expanded="true" />
+            <element signature="e#3698#3699#0" expanded="true" />
+            <element signature="e#5488#5893#0" expanded="true" />
+            <element signature="e#5892#5893#0" expanded="true" />
+            <element signature="e#5937#6313#0" expanded="true" />
+            <element signature="e#6312#6313#0" expanded="true" />
+            <element signature="e#6358#6868#0" expanded="true" />
+            <element signature="e#6867#6868#0" expanded="true" />
           </folding>
         </state>
       </provider>

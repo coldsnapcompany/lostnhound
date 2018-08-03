@@ -40,6 +40,7 @@ public class FoundActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 71;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private String imageID;
 
 
     @Override
@@ -80,19 +81,20 @@ public class FoundActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                uploadImage();
+
                 String nameStr = name.getText().toString().trim();
                 String typeStr = type.getSelectedItem().toString();
                 String postcodeStr = postcode.getSelectedItem().toString();
                 String colourStr = colour.getSelectedItem().toString();
+                String imageStr = imageID;
 
                 String petId = databasePets.push().getKey();
-                Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr);
+                Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr, imageStr);
                 databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets"
 
                 Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
                 startActivity(foundToMainIntent);
-
-                uploadImage();
 
                 Toast.makeText(getApplicationContext(), "Pet posted, thank you", Toast.LENGTH_SHORT).show();
 
@@ -135,13 +137,15 @@ public class FoundActivity extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString()); //setting the storage location
+            imageID = UUID.randomUUID().toString();
+            StorageReference ref = storageReference.child("images/"+ imageID); //setting the storage location
+
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() { //this uploads the file
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast.makeText(FoundActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FoundActivity.this, "Uploaded Photo", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() { //this is when upload fails

@@ -6,15 +6,17 @@ public class Pet {
     String type;
     String postcode;
     String colour;
+    String image;
 
     public Pet() {
     }
 
-    public Pet(String name, String type, String postcode, String colour) {
+    public Pet(String name, String type, String postcode, String colour, String image) {
         this.name = name;
         this.type = type;
         this.postcode = postcode;
         this.colour = colour;
+        this.image = image;
     }
 
     public String getName() {
@@ -47,5 +49,13 @@ public class Pet {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -63,12 +63,13 @@ public class LostActivity extends AppCompatActivity {
                     pet.setType(petSnapshot.getValue(Pet.class).getType());
                     pet.setPostcode(petSnapshot.getValue(Pet.class).getPostcode());
                     pet.setColour(petSnapshot.getValue(Pet.class).getColour());
+                    pet.setImage(petSnapshot.getValue(Pet.class).getImage());
 
                     petList.add(pet); //adds Pet object to List, then repeats for each DB entry
 
                 }
 
-                adapter = new PetAdapter(getApplicationContext(), petList);
+                adapter = new PetAdapter(getApplicationContext(), petList); //sends the Pet List through the adapter
                 recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
 
 
