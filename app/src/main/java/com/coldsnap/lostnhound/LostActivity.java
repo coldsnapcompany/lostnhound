@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class LostActivity extends AppCompatActivity {
     private DatabaseReference petsRef;
 
     List<Pet> petList;
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class LostActivity extends AppCompatActivity {
 
         back_button = findViewById(R.id.backBtn);
         petsRef = FirebaseDatabase.getInstance().getReference("pets");
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         petList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);

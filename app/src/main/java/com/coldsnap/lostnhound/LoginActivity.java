@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         //super.onBackPressed(); //commented this line in order to disable back press
         //Write your code here
-        Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
+        finish();
+        System.exit(0);
     }
 }

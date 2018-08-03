@@ -1,25 +1,45 @@
 package com.coldsnap.lostnhound;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.IOException;
+import java.util.UUID;
 
 public class FoundActivity extends AppCompatActivity {
 
     private ImageButton back_button;
-    private Button submit;
+    private ImageView preview;
+    private Button submit, upload;
     private EditText name;
     private Spinner type, postcode, colour;
     private DatabaseReference databasePets;
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 71;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
 
     @Override
@@ -27,13 +47,18 @@ public class FoundActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found);
 
-        databasePets = FirebaseDatabase.getInstance().getReference("pets");
         name = findViewById(R.id.petNameEt);
         colour = findViewById(R.id.colourSpn);
         type = findViewById(R.id.typeSpn);
         postcode = findViewById(R.id.postcodeSpn);
+        upload = findViewById(R.id.uploadBtn);
         submit = findViewById(R.id.submitBtn);
+        preview = findViewById(R.id.previewImg);
         back_button = findViewById(R.id.backBtn);
+
+        databasePets = FirebaseDatabase.getInstance().getReference("pets");
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
 
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +66,13 @@ public class FoundActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
                 startActivity(foundToMainIntent);
+            }
+        });
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
             }
         });
 
@@ -60,6 +92,8 @@ public class FoundActivity extends AppCompatActivity {
                 Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
                 startActivity(foundToMainIntent);
 
+                uploadImage();
+
                 Toast.makeText(getApplicationContext(), "Pet posted, thank you", Toast.LENGTH_SHORT).show();
 
             }
@@ -67,4 +101,66 @@ public class FoundActivity extends AppCompatActivity {
 
 
     }
+
+    private void chooseImage() { //method for picking an image from device gallery
+        Intent intent = new Intent();
+        intent.setType("image/*"); //setting intent type to image
+        intent.setAction(Intent.ACTION_GET_CONTENT); //action is set to get some content, creates the image chooser UI
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST); //used to receive the result
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //used to display the image, in this case as a preview
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK //checks to see if request code matches PICK_IMAGE_REQUEST
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                preview.setImageBitmap(bitmap);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void uploadImage() { //a lot simpler than it looks
+
+        if(filePath != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this); //progressdialog is a message to user thing for processes that can take time
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString()); //setting the storage location
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() { //this uploads the file
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(FoundActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() { //this is when upload fails
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(FoundActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() { //this is just the uploaded message to user
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
+
+
 }

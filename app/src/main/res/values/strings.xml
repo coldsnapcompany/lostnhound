@@ -37,6 +37,7 @@
     <string name="submit">Submit</string>
     <string name="postcode_prompt"></string>
     <string name="pet_prompt"></string>
+    <string name="upload">Upload Photo</string>
     <string-array name="postcodes">
         <item></item>
         <item>Dublin 1</item>
