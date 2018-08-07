@@ -15,7 +15,7 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/petImg"
                 android:layout_width="120dp"
                 android:layout_height="90dp"
                 android:padding="4dp" />
@@ -25,9 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_toRightOf="@id/petImg"
                 android:text="Percy"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textColor="#000000" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_below="@id/textViewName"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_toRightOf="@id/petImg"
                 android:text="Bird"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
@@ -48,7 +48,7 @@
                 android:layout_below="@id/textViewType"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_toRightOf="@id/petImg"
                 android:text="Dublin 13"
                 android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                 android:layout_below="@id/textViewPostcode"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_toRightOf="@id/petImg"
                 android:text="Blue"
                 android:textStyle="bold" />
 

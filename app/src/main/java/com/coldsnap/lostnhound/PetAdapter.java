@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.List;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
@@ -37,6 +35,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         holder.textViewType.setText(pet.getType());
         holder.textViewPostcode.setText(pet.getPostcode());
         holder.textViewColour.setText(pet.getColour());
+
     }
 
     @Override
@@ -52,7 +51,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         public PetViewHolder(View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView); //doesn't do anything with it, no image in Pet model yet
+            imageView = itemView.findViewById(R.id.petImg); //doesn't do anything with it, no image in Pet model yet
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewType = itemView.findViewById(R.id.textViewType);
             textViewPostcode = itemView.findViewById(R.id.textViewPostcode);

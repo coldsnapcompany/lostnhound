@@ -28,7 +28,7 @@ public class LostActivity extends AppCompatActivity {
     private DatabaseReference petsRef;
 
     List<Pet> petList;
-    private StorageReference mStorageRef;
+    private StorageReference petImagesRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,11 @@ public class LostActivity extends AppCompatActivity {
 
         back_button = findViewById(R.id.backBtn);
         petsRef = FirebaseDatabase.getInstance().getReference("pets");
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        petImagesRef = FirebaseStorage.getInstance().getReference("images");
 
         petList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true); //improves performance
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); //for a vertical recycler view
 
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class LostActivity extends AppCompatActivity {
                 }
 
                 adapter = new PetAdapter(getApplicationContext(), petList); //sends the Pet List through the adapter
-                recyclerView.setAdapter(adapter); //set this adapter to the recyclerview
+                recyclerView.setAdapter(adapter); //sets this adapter to the recyclerview
 
 
             }

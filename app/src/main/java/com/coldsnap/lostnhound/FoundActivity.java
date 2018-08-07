@@ -37,7 +37,7 @@ public class FoundActivity extends AppCompatActivity {
     private Spinner type, postcode, colour;
     private DatabaseReference databasePets;
     private Uri filePath;
-    private final int PICK_IMAGE_REQUEST = 71;
+    private final int PICK_IMAGE_REQUEST = 71; //can use any positive number
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private String imageID;
