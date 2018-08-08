@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
@@ -35,6 +37,12 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         holder.textViewType.setText(pet.getType());
         holder.textViewPostcode.setText(pet.getPostcode());
         holder.textViewColour.setText(pet.getColour());
+        Picasso.get()
+                .load(pet.getImage())
+                .placeholder(R.drawable.whiskers)
+                .fit()
+                .centerCrop()
+                .into(holder.imageView);
 
     }
 
@@ -51,7 +59,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         public PetViewHolder(View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.petImg); //doesn't do anything with it, no image in Pet model yet
+            imageView = itemView.findViewById(R.id.petImg);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewType = itemView.findViewById(R.id.textViewType);
             textViewPostcode = itemView.findViewById(R.id.textViewPostcode);

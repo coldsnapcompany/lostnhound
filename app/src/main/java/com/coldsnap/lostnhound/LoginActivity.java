@@ -32,12 +32,13 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        //not working - interfering with device back button functionality
         //to maintain a users log in, don't have to log in every time
         //will be added back when user getting logged in even after account deleted is fixed
 //        if (mAuth.getCurrentUser() != null) {
 //            // User is logged in
-//            Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(registerIntent);
+//            Intent loginToMainIntent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(loginToMainIntent);
 //        }
 
         // assigning UI elements to variables

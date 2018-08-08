@@ -21,10 +21,10 @@
         android:text="@string/pet_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <EditText
         android:id="@+id/petNameEt"
@@ -40,10 +40,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.32" />
 
     <TextView
         android:id="@+id/postcodeTf"
@@ -58,10 +58,10 @@
         android:text="@string/postcode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/colourTf"
@@ -76,9 +76,10 @@
         android:text="@string/colour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624" />
 
     <TextView
         android:id="@+id/typePetTf"
@@ -93,10 +94,10 @@
         android:text="@string/pet_type"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.406" />
 
     <Spinner
         android:id="@+id/colourSpn"
@@ -112,10 +113,10 @@
         android:prompt="@string/postcode_prompt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <Spinner
         android:id="@+id/postcodeSpn"
@@ -131,10 +132,10 @@
         android:prompt="@string/postcode_prompt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintVertical_bias="0.553" />
 
     <Spinner
         android:id="@+id/typeSpn"
@@ -150,10 +151,10 @@
         android:prompt="@string/pet_prompt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.445" />
 
     <Button
         android:id="@+id/submitBtn"
@@ -168,9 +169,10 @@
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintVertical_bias="0.898" />
 
     <ImageButton
         android:id="@+id/backBtn"
@@ -192,8 +194,8 @@
 
     <ImageView
         android:id="@+id/previewImg"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
+        android:layout_width="121dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -202,9 +204,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.765" />
 
     <Button
         android:id="@+id/uploadBtn"
@@ -219,9 +222,10 @@
         android:text="@string/upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.898" />
 
 
 </android.support.constraint.ConstraintLayout>

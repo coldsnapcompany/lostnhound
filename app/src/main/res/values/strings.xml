@@ -26,8 +26,8 @@
     <string name="delete_button">Disable Account</string>
 
     <!-- main menu strings -->
-    <string name="lost_button">I Lost</string>
-    <string name="found_button">I Found</string>
+    <string name="lost_button">Missing Posters</string>
+    <string name="found_button">Nail A Missing Poster</string>
 
     <!-- found page strings -->
     <string name="pet_name">Pet\'s name (if collared):</string>

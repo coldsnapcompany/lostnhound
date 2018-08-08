@@ -14,7 +14,7 @@ public class Pet {
     public Pet(String name, String type, String postcode, String colour, String image) {
 
         if(name.trim().equals("")) { //if the pet has no name collar and nothing is entered
-            name = "No Name";
+            name = "< unknown name >";
         }
 
         this.name = name;
