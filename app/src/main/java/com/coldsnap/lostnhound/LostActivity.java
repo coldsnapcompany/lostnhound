@@ -64,6 +64,7 @@ public class LostActivity extends AppCompatActivity {
                     pet.setPostcode(petSnapshot.getValue(Pet.class).getPostcode());
                     pet.setColour(petSnapshot.getValue(Pet.class).getColour());
                     pet.setImage(petSnapshot.getValue(Pet.class).getImage());
+                    pet.setStatus(petSnapshot.getValue(Pet.class).getStatus());
 
                     petList.add(pet); //adds Pet object to List, then repeats for each DB entry
 

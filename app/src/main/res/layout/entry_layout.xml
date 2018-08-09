@@ -16,36 +16,48 @@
 
             <ImageView
                 android:id="@+id/petImg"
-                android:layout_width="120dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
-                android:layout_margin="1dp"/>
+                android:layout_margin="1dp" />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/petImg"
+                android:text="Found"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_below="@id/textViewStatus"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/petImg"
                 android:text="Percy"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textViewType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewName"
+                android:layout_below="@id/textViewPostcode"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/petImg"
-                android:text="Bird"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:text="Bird" />
 
             <TextView
                 android:id="@+id/textViewPostcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewType"
+                android:layout_below="@id/textViewName"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/petImg"
@@ -56,12 +68,13 @@
                 android:id="@+id/textViewColour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewPostcode"
+                android:layout_below="@id/textViewType"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/petImg"
                 android:text="Blue"
                 android:textStyle="bold" />
+
 
         </RelativeLayout>
 

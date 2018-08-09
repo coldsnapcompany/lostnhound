@@ -37,7 +37,7 @@ public class FoundActivity extends AppCompatActivity {
     private ImageView preview;
     private Button submit, upload;
     private EditText name;
-    private Spinner type, postcode, colour;
+    private Spinner type, postcode, colour, status;
     private DatabaseReference databasePets;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71; //can use any positive number
@@ -55,6 +55,7 @@ public class FoundActivity extends AppCompatActivity {
         colour = findViewById(R.id.colourSpn);
         type = findViewById(R.id.typeSpn);
         postcode = findViewById(R.id.postcodeSpn);
+        status = findViewById(R.id.statusSpn);
         upload = findViewById(R.id.uploadBtn);
         submit = findViewById(R.id.submitBtn);
         preview = findViewById(R.id.previewImg);
@@ -147,11 +148,12 @@ public class FoundActivity extends AppCompatActivity {
                             String typeStr = type.getSelectedItem().toString();
                             String postcodeStr = postcode.getSelectedItem().toString();
                             String colourStr = colour.getSelectedItem().toString();
+                            String statusStr = status.getSelectedItem().toString();
                             String imageStr = taskSnapshot.getDownloadUrl().toString(); //this is getting the firebase URL to download the image
                             //String imageStr = imageID + "." + getFileExtension(filePath); //this just sets a random ID
 
                             String petId = databasePets.push().getKey();
-                            Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr, imageStr);
+                            Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr, imageStr, statusStr);
                             databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets"
 
                             //end of pasted code

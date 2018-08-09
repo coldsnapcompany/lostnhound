@@ -1,6 +1,7 @@
 package com.coldsnap.lostnhound;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,20 +9,21 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button register_button, login_button, forgot_password;
+    private Button login_button;
     private EditText email, password;
     private FirebaseAuth mAuth;
+    private TextView register_button, forgot_password, logo_name;
+    Typeface logo_font;
 
 
 
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        logo_font = Typeface.createFromAsset(getAssets(),"fonts/Ubuntu-R.ttf");
 
         //not working - interfering with device back button functionality
         //to maintain a users log in, don't have to log in every time
@@ -43,10 +46,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // assigning UI elements to variables
         login_button = findViewById(R.id.loginBtn);
-        register_button = findViewById(R.id.registerBtn);
-        forgot_password = findViewById(R.id.forgotBtn);
+        register_button = findViewById(R.id.registerTv);
+        forgot_password = findViewById(R.id.forgotTv);
         email = findViewById(R.id.emailEt);
         password = findViewById(R.id.passwordEt);
+        logo_name = findViewById(R.id.logoNameTv);
+        logo_name.setTypeface(logo_font);
 
         //button to go to reg page
         register_button.setOnClickListener(new View.OnClickListener() {

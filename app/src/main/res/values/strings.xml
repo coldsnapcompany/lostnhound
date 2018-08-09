@@ -4,6 +4,7 @@
     <string name="app_name">LostNHound</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="logo_text">Lost N Hound</string>
     <string name="loginButton">Login</string>
     <string name="regButton">Register</string>
     <string name="full_name">Full Name</string>
@@ -27,7 +28,7 @@
 
     <!-- main menu strings -->
     <string name="lost_button">Missing Posters</string>
-    <string name="found_button">Nail A Missing Poster</string>
+    <string name="found_button">Post a lost or found</string>
 
     <!-- found page strings -->
     <string name="pet_name">Pet\'s name (if collared):</string>
@@ -37,7 +38,13 @@
     <string name="submit">Submit</string>
     <string name="postcode_prompt"></string>
     <string name="pet_prompt"></string>
+    <string name="status">Lost or Found?</string>
     <string name="upload">Upload Photo</string>
+    <string-array name="status">
+        <item></item>
+        <item>Lost</item>
+        <item>Found</item>
+    </string-array>
     <string-array name="postcodes">
         <item></item>
         <item>Dublin 1</item>

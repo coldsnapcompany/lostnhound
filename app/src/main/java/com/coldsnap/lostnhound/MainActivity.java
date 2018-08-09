@@ -1,6 +1,7 @@
 package com.coldsnap.lostnhound;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private String userId;
     private String fullName;
     private Button lost_button, found_button;
+    Typeface text_font;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,12 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseUsers = FirebaseDatabase.getInstance().getReference("users"); //users DB reference
+        text_font = Typeface.createFromAsset(getAssets(), "fonts/Ubuntu-R.ttf");
         settings_button = findViewById(R.id.settingsBtn);
         lost_button = findViewById(R.id.lostBtn);
+        lost_button.setTypeface(text_font);
         found_button = findViewById(R.id.foundBtn);
+        found_button.setTypeface(text_font);
         userId = currentUser.getUid(); //not used
 
 

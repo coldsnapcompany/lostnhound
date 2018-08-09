@@ -17,6 +17,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
     private Context mCtx; //needed to inflate list_layout layout
     private List<Pet> petList;
 
+
     public PetAdapter(Context mCtx, List<Pet> petList) {
         this.mCtx = mCtx;
         this.petList = petList;
@@ -37,6 +38,16 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         holder.textViewType.setText(pet.getType());
         holder.textViewPostcode.setText(pet.getPostcode());
         holder.textViewColour.setText(pet.getColour());
+        holder.textViewStatus.setText(pet.getStatus());
+
+        // not working, doesn't recognise Found or Lost strings, all strings made RED, does work without if check though, maybe try getValue()
+//        if(holder.textViewStatus.toString().trim().equalsIgnoreCase("Found")) {
+//            holder.textViewStatus.setTextColor(Color.GREEN);
+//        }
+//        else if(holder.textViewStatus.toString().trim().equalsIgnoreCase("Lost")){
+//            holder.textViewStatus.setTextColor(Color.RED);
+//        }
+
         Picasso.get()
                 .load(pet.getImage())
                 .placeholder(R.drawable.whiskers)
@@ -54,7 +65,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
     class PetViewHolder extends RecyclerView.ViewHolder{ //returns instance of first implemented method above
 
         ImageView imageView;
-        TextView textViewName, textViewType, textViewPostcode, textViewColour;
+        TextView textViewName, textViewType, textViewPostcode, textViewColour, textViewStatus;
 
         public PetViewHolder(View itemView) {
             super(itemView);
@@ -64,6 +75,10 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
             textViewType = itemView.findViewById(R.id.textViewType);
             textViewPostcode = itemView.findViewById(R.id.textViewPostcode);
             textViewColour = itemView.findViewById(R.id.textViewColour);
+            textViewStatus = itemView.findViewById(R.id.textViewStatus);
+
+
+
         }
     }
 

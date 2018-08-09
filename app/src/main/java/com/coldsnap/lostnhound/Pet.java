@@ -7,11 +7,12 @@ public class Pet {
     String postcode;
     String colour;
     String image;
+    String status;
 
     public Pet() {
     }
 
-    public Pet(String name, String type, String postcode, String colour, String image) {
+    public Pet(String name, String type, String postcode, String colour, String image, String status) {
 
         if(name.trim().equals("")) { //if the pet has no name collar and nothing is entered
             name = "< unknown name >";
@@ -22,6 +23,7 @@ public class Pet {
         this.postcode = postcode;
         this.colour = colour;
         this.image = image;
+        this.status = status;
     }
 
     public String getName() {
@@ -62,5 +64,13 @@ public class Pet {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
