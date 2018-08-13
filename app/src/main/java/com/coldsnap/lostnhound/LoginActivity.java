@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         //not working - interfering with device back button functionality
         //to maintain a users log in, don't have to log in every time
         //will be added back when user getting logged in even after account deleted is fixed
-//        if (mAuth.getCurrentUser() != null) {
-//            // User is logged in
-//            Intent loginToMainIntent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(loginToMainIntent);
-//        }
+        if (mAuth.getCurrentUser() != null) {
+            // User is logged in
+            Intent loginToMainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(loginToMainIntent);
+        }
 
         // assigning UI elements to variables
         login_button = findViewById(R.id.loginBtn);

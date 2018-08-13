@@ -31,10 +31,10 @@
     <string name="found_button">Post a lost or found</string>
 
     <!-- found page strings -->
-    <string name="pet_name">Pet\'s name (if collared):</string>
-    <string name="pet_type">Type of pet (cat, dog):</string>
-    <string name="postcode">Dublin post area:</string>
-    <string name="colour">Pet\'s primary coat/skin colour:</string>
+    <string name="pet_name">Pet\'s name (if collared)</string>
+    <string name="pet_type">Pet type</string>
+    <string name="postcode">Dublin area</string>
+    <string name="colour">Pet colour</string>
     <string name="submit">Submit</string>
     <string name="postcode_prompt"></string>
     <string name="pet_prompt"></string>
