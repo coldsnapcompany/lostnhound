@@ -31,15 +31,15 @@
     <string name="found_button">Post a lost or found</string>
 
     <!-- found page strings -->
-    <string name="pet_name">Pet\'s name (if collared)</string>
-    <string name="pet_type">Pet type</string>
-    <string name="postcode">Dublin area</string>
-    <string name="colour">Pet colour</string>
+    <string name="pet_name">Name</string>
+    <string name="pet_type">Type</string>
+    <string name="postcode">Area</string>
+    <string name="colour">Colour</string>
     <string name="submit">Submit</string>
     <string name="postcode_prompt"></string>
     <string name="pet_prompt"></string>
-    <string name="status">Lost or Found?</string>
-    <string name="upload">Upload Photo</string>
+    <string name="status">Lost or Found</string>
+    <string name="upload">Upload Pic</string>
     <string-array name="status">
         <item></item>
         <item>Lost</item>
