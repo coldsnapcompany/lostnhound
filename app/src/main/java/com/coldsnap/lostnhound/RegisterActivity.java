@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser userDB; //is used
     private Button register_detailsBtn;
+    private ImageButton back_button;
     private EditText full_name, email, password;
     private DatabaseReference databaseUsers;
     private String userDBUID;
@@ -41,6 +43,15 @@ public class RegisterActivity extends AppCompatActivity {
         full_name = findViewById(R.id.nameregEt);
         email = findViewById(R.id.emailregEt);
         password = findViewById(R.id.passwordregEt);
+        back_button = findViewById(R.id.backBtn);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsToMainIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(settingsToMainIntent);
+            }
+        });
 
         //gets data fields, checks them and creates user in auth DB
         register_detailsBtn.setOnClickListener(new View.OnClickListener() {

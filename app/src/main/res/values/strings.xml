@@ -21,6 +21,7 @@
     <string name="change_password">Change Password</string>
     <string name="enter_email">Enter Email</string>
     <string name="back_button">back button</string>
+    <string name="confirm_text">Confirm account disabling</string>
 
     <!-- delete account menu strings -->
     <string name="delete_textview">Please re-enter your password</string>

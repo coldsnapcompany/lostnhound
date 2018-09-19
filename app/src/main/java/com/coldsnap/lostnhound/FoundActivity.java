@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
@@ -43,6 +46,7 @@ public class FoundActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 71; //can use any positive number
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private StorageTask uploadTask;
     private String imageID;
 
 
@@ -85,12 +89,12 @@ public class FoundActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                uploadImageAndProfile();
-
-                Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class);
-                startActivity(foundToMainIntent);
-
-                //Toast.makeText(getApplicationContext(), "Pet posted, thank you", Toast.LENGTH_SHORT).show(); //taken out as it overlaps with "Uploaded"
+                if(uploadTask != null && uploadTask.isInProgress()) {
+                    Toast.makeText(FoundActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    uploadImageAndProfile();
+                }
 
             }
         });
@@ -127,20 +131,29 @@ public class FoundActivity extends AppCompatActivity {
 
         if(filePath != null)
         {
-            final ProgressDialog progressDialog = new ProgressDialog(this); //progressdialog is a message to user thing for processes that can take time
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();
+            final ProgressBar progressBar = new ProgressBar(this); //progressdialog is a message to user thing for processes that can take time
+//            progressDialog.setTitle("Uploading...");
+//            progressDialog.show();
 
             imageID = UUID.randomUUID().toString();
             StorageReference ref = storageReference.child("images/"+ imageID + "." + getFileExtension(filePath)); //setting the storage location and file name
 
             // if having trouble with spamming uploads, https://youtu.be/lPfQN-Sfnjw?t=19m5s
-            ref.putFile(filePath)
+            uploadTask = ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() { //this uploads the file
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss();
-                            Toast.makeText(FoundActivity.this, "Uploaded Photo", Toast.LENGTH_SHORT).show();
+//                            progressDialog.dismiss();
+
+                            Handler handler = new Handler(); //adds a delay to the reset of the progress bar for 2 seconds, so user sees 100% bar for 2 secs
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setProgress(0);
+                                }
+                            }, 2000);
+
+                            Toast.makeText(FoundActivity.this, "Uploaded Pet", Toast.LENGTH_SHORT).show();
 
                             //this was below uploadImage call, above
 
@@ -149,32 +162,38 @@ public class FoundActivity extends AppCompatActivity {
                             String postcodeStr = postcode.getSelectedItem().toString();
                             String colourStr = colour.getSelectedItem().toString();
                             String statusStr = status.getSelectedItem().toString();
-                            String imageStr = taskSnapshot.getDownloadUrl().toString(); //this is getting the firebase URL to download the image
+                            String imageStr = taskSnapshot.getDownloadUrl().toString(); //this is getting the firebase URL, to download the image
                             //String imageStr = imageID + "." + getFileExtension(filePath); //this just sets a random ID
 
                             String petId = databasePets.push().getKey();
                             Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr, imageStr, statusStr);
                             databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets"
 
-                            //end of pasted code
+                            Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class); //return user to main after upload finished
+                            startActivity(foundToMainIntent);
 
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() { //this is when upload fails
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
+//                            progressDialog.dismiss();
                             Toast.makeText(FoundActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() { //this is just the uploaded message to user
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+//                          progressDialog.setMessage("Uploaded "+(int)progress+"%");
+
+                            progressBar.setProgress((int) progress);
+
                         }
                     });
+        }
+        else{
+            Toast.makeText(FoundActivity.this, "Please upload an image", Toast.LENGTH_SHORT).show();
         }
     }
 
