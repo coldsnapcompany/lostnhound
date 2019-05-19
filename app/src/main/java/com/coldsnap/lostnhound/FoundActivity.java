@@ -90,7 +90,7 @@ public class FoundActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(uploadTask != null && uploadTask.isInProgress()) {
-                    Toast.makeText(FoundActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FoundActivity.this, "Upload in progress, please wait.", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     uploadImageAndProfile();
