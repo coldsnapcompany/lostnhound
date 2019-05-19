@@ -32,7 +32,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(PetViewHolder holder, int position) {
+    public void onBindViewHolder(PetViewHolder holder, int position) { //getting the text and then image values for each list entry
         Pet pet = petList.get(position);
         holder.textViewName.setText(pet.getName());
         holder.textViewType.setText(pet.getType());
@@ -40,7 +40,8 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         holder.textViewColour.setText(pet.getColour());
         holder.textViewStatus.setText(pet.getStatus());
 
-        // not working, doesn't recognise Found or Lost strings, all strings made RED, does work without if check though, maybe try getValue()
+        // aim is to check is text is Found or Lost and change the font colour accordingly
+        // not working, doesn't recognise Found or Lost strings, all strings made RED, does work without "if" check though, maybe try getValue()
 //        if(holder.textViewStatus.toString().trim().equalsIgnoreCase("Found")) {
 //            holder.textViewStatus.setTextColor(Color.GREEN);
 //        }
@@ -62,7 +63,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         return petList.size();
     }
 
-    class PetViewHolder extends RecyclerView.ViewHolder{ //returns instance of first implemented method above
+    class PetViewHolder extends RecyclerView.ViewHolder{ //returns instance of first implemented method above - sets the values to the layout
 
         ImageView imageView;
         TextView textViewName, textViewType, textViewPostcode, textViewColour, textViewStatus;

@@ -117,7 +117,7 @@ public class FoundActivity extends AppCompatActivity {
         {
             filePath = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath); //filePath very important variable, it is where the photo is on the device
                 preview.setImageBitmap(bitmap);
             }
             catch (IOException e)
@@ -131,21 +131,21 @@ public class FoundActivity extends AppCompatActivity {
 
         if(filePath != null)
         {
-            final ProgressBar progressBar = new ProgressBar(this); //progressdialog is a message to user thing for processes that can take time
+            final ProgressBar progressBar = new ProgressBar(this); //progress dialog is a message to user thing for processes that can take time (!!not used currently!!)
 //            progressDialog.setTitle("Uploading...");
 //            progressDialog.show();
 
-            imageID = UUID.randomUUID().toString();
-            StorageReference ref = storageReference.child("images/"+ imageID + "." + getFileExtension(filePath)); //setting the storage location and file name
+            imageID = UUID.randomUUID().toString(); //generating random image ID
+            StorageReference ref = storageReference.child("images/"+ imageID + "." + getFileExtension(filePath)); //setting the storage location and file name (storageReference is the root of DB)
 
-            // if having trouble with spamming uploads, https://youtu.be/lPfQN-Sfnjw?t=19m5s
-            uploadTask = ref.putFile(filePath)
+            // spam uploads tutorial, https://youtu.be/lPfQN-Sfnjw?t=19m5s
+            uploadTask = ref.putFile(filePath) //!!IMPORTANT!! the upload task (uploadTask) is to take the image from the phone (filePath) and upload it (putFile) using the ref address created above
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() { //this uploads the file
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            progressDialog.dismiss();
+//                            progressDialog.dismiss(); //not implemented - this is for dismissing the progress bar
 
-                            Handler handler = new Handler(); //adds a delay to the reset of the progress bar for 2 seconds, so user sees 100% bar for 2 secs
+                            Handler handler = new Handler(); //adds a delay to the reset of the progress bar for 2 seconds, so user sees 100% bar for 2 secs and can't spam submissions
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -155,19 +155,18 @@ public class FoundActivity extends AppCompatActivity {
 
                             Toast.makeText(FoundActivity.this, "Uploaded Pet", Toast.LENGTH_SHORT).show();
 
-                            //this was below uploadImage call, above
+
 
                             String nameStr = name.getText().toString().trim();
                             String typeStr = type.getSelectedItem().toString();
                             String postcodeStr = postcode.getSelectedItem().toString();
                             String colourStr = colour.getSelectedItem().toString();
                             String statusStr = status.getSelectedItem().toString();
-                            String imageStr = taskSnapshot.getDownloadUrl().toString(); //this is getting the firebase URL, to download the image
-                            //String imageStr = imageID + "." + getFileExtension(filePath); //this just sets a random ID
+                            String imageStr = taskSnapshot.getDownloadUrl().toString(); //this gets the URL (its gets a proper www address) of the image that was previously just stored in Firebase Storage using - uploadTask = ref.putFile(filePath)
 
                             String petId = databasePets.push().getKey();
                             Pet pet = new Pet(nameStr, typeStr, postcodeStr, colourStr, imageStr, statusStr);
-                            databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets"
+                            databasePets.child(petId).setValue(pet); //adds pet to database as child entry of "pets" with all these values including image URL
 
                             Intent foundToMainIntent = new Intent(FoundActivity.this, MainActivity.class); //return user to main after upload finished
                             startActivity(foundToMainIntent);
