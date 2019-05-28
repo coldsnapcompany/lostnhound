@@ -1,3 +1,5 @@
+//this page is the poster form
+
 package com.coldsnap.lostnhound;
 
 import android.app.ProgressDialog;

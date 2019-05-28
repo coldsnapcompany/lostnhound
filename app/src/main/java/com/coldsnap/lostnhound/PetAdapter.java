@@ -63,7 +63,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         return petList.size();
     }
 
-    class PetViewHolder extends RecyclerView.ViewHolder{ //returns instance of first implemented method above - sets the values to the layout
+    public class PetViewHolder extends RecyclerView.ViewHolder{ //returns instance of first implemented method above - sets the values to the layout
 
         ImageView imageView;
         TextView textViewName, textViewType, textViewPostcode, textViewColour, textViewStatus;

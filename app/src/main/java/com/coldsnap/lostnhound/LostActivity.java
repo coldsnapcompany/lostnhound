@@ -1,3 +1,5 @@
+//this page is the list of posters
+
 package com.coldsnap.lostnhound;
 
 import android.content.Intent;
@@ -70,7 +72,7 @@ public class LostActivity extends AppCompatActivity {
 
                 }
 
-                adapter = new PetAdapter(getApplicationContext(), petList); //sends the Pet List through the adapter
+                adapter = new PetAdapter(getApplicationContext(), petList); //sends the Pet object List through the adapter
                 recyclerView.setAdapter(adapter); //sets this adapter to the recyclerview
 
 
